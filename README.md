@@ -1,2 +1,2 @@
 # kubectl-image
-Minimal kubectl UBI-based image.
+Minimal [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) UBI-based image.

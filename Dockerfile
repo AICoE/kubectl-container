@@ -1,5 +1,18 @@
 FROM registry.access.redhat.com/ubi8/ubi-minimal
-LABEL maintainer "Marek Cermak <macermak@redhat.com>"
+
+ENV SUMMARY="Minimal kubectl ubi8-minimal image." \
+	DESCRIPTION="Minimal [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) UBI-based image. This image is meant to be used in Argo Workflows to inspect resources."
+
+LABEL summary="$SUMMARY" \
+	  description="$DESCRIPTION" \
+	  io.k8s.description="$DESCRIPTION" \
+	  io.k8s.display-name="Kubectl ubi8-minimal" \
+	  io.openshift.tags="argo,kubectl" \
+	  name="cermakm/kubectl:latest" \
+      vendor="AICoE at the Office of the CTO, Red Hat Inc." \
+	  version="0.1.0" \
+	  release="0" \
+	  maintainer="Marek Cermak <macermak@redhat.com>"
 
 # Install requirements
 RUN VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) ;\
@@ -12,7 +25,7 @@ RUN VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/
     chmod +x /usr/bin/jq
 RUN microdnf install -y findutils
 
-USER 1001
+USER 0
 
 ENTRYPOINT [ "kubectl" ]
 CMD [ "--help" ]

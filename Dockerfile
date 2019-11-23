@@ -25,7 +25,7 @@ RUN VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/
     chmod +x /usr/bin/jq
 RUN microdnf install -y findutils
 
-USER 0
+USER 1001
 
 ENTRYPOINT [ "kubectl" ]
 CMD [ "--help" ]
